@@ -8,6 +8,10 @@ This is a project that launch a Zabbix example environment for testing purposes 
 - Postgres example server (Debian 10): PostgreSQL 12 and Zabbix Agent 5.2.
 - Apache example server (Debian 10): Apache HTTPD 12 and Zabbix Agent 5.2.
 
+<img src="img/snapshot_1.png" width="400px" height="auto">
+<img src="img/snapshot_2.png" width="400px" height="auto">
+<img src="img/snapshot_3.png" width="400px" height="auto">
+
 ## What is Vagrant?
 
 Vagrant is a tool that uses virtual machines to dynamically build configurable, lightweight, and portable virtual machines. Vagrant supports the use of either Puppet or Chef for managing the configuration. Much more information is available on the [Vagrant web site](http://www.vagrantup.com).
