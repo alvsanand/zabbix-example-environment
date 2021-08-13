@@ -1,6 +1,5 @@
 # Zabbix example environment
 
-## What is this project?
 
 This is a project that launch a Zabbix example environment for testing purposes using [Vagrant](http://www.vagrantup.com). It includes:
 
