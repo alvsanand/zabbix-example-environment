@@ -76,7 +76,7 @@ vagrant up
 
 8. Open Zabbis Dashboard from http://IP_ZABBIX_SERVER using default credentials user ```Admin``` and password ```zabbix```.
 
-8. Configure auto-registration in Zabbix:
+9. Configure auto-registration in Zabbix:
     - Add auto registration trigger: Configuration -> Action -> Autoregistration actions -> Create actions:
       - Postgres:  
         - Conditions:
@@ -90,3 +90,23 @@ vagrant up
         - Operations:
           - "Add host"
           - "Link Template host" for templates "Linux by Zabbix agent" and "Apache by Zabbix agent"
+
+In case you want to access to the server:
+
+1. Go to the correct directory:
+
+```bash
+cd apache-server
+```
+
+2. Execute ssh command with default password ```vagrant```:
+
+```bash
+vagrant ssh
+```
+
+3. If desired, get root credentials:
+
+```bash
+sudo su -
+```
