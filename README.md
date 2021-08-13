@@ -9,9 +9,9 @@ This is a project that launch a Zabbix example environment for testing purposes 
 - Apache example server (Debian 10): Apache HTTPD 12 and Zabbix Agent 5.2.
 
 <p float="left">
-  <img src="img/snapshot_1.png" width="350px" height="auto">
-  <img src="img/snapshot_2.png" width="350px" height="auto">
-  <img src="img/snapshot_3.png" width="350px" height="auto">
+  <img src="img/snapshot_1.png" width="400px" height="auto">
+  <img src="img/snapshot_2.png" width="400px" height="auto">
+  <img src="img/snapshot_3.png" width="400px" height="auto">
 </p>
 
 ## What is Vagrant?
