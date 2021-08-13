@@ -8,9 +8,11 @@ This is a project that launch a Zabbix example environment for testing purposes 
 - Postgres example server (Debian 10): PostgreSQL 12 and Zabbix Agent 5.2.
 - Apache example server (Debian 10): Apache HTTPD 12 and Zabbix Agent 5.2.
 
-<img src="img/snapshot_1.png" width="400px" height="auto">
-<img src="img/snapshot_2.png" width="400px" height="auto">
-<img src="img/snapshot_3.png" width="400px" height="auto">
+<p float="left">
+  <img src="img/snapshot_1.png" width="350px" height="auto">
+  <img src="img/snapshot_2.png" width="350px" height="auto">
+  <img src="img/snapshot_3.png" width="350px" height="auto">
+</p>
 
 ## What is Vagrant?
 
