@@ -1,7 +1,8 @@
 # Zabbix example environment
 
+This is a project that launch a example environment of the motorization system called [Zabbix](https://www.zabbix.com/) for testing purposes using [Vagrant](http://www.vagrantup.com). It would help you learn how to use Zabbix in your local computer.
 
-This is a project that launch a Zabbix example environment for testing purposes using [Vagrant](http://www.vagrantup.com). It includes:
+The example environment includes:
 
 - Zabbix server (Debian 10): Zabbix Server 5.2, Apache and PostgreSQL 12 with TimescaleDB.
 - Postgres example server (Debian 10): PostgreSQL 12 and Zabbix Agent 5.2.
@@ -13,66 +14,79 @@ This is a project that launch a Zabbix example environment for testing purposes 
   <img src="img/snapshot_3.png" width="400px" height="auto">
 </p>
 
-## What is Vagrant?
+## What is Zabbix?
 
-Vagrant is a tool that uses virtual machines to dynamically build configurable, lightweight, and portable virtual machines. Vagrant supports the use of either Puppet or Chef for managing the configuration. Much more information is available on the [Vagrant web site](http://www.vagrantup.com).
+Zabbix is an open-source monitoring software tool for diverse IT components, including networks, servers, virtual machines (VMs) and cloud services. Zabbix provides monitoring metrics, among others network utilization, CPU load and disk space consumption. Much more information is available on the [Zabbix web site](http://www.zabbix.com).
 
-## How do I install Vagrant?
+## Requisites
 
-The VirtualBox version used is 6.1 and Vagrant version is v2.2.14.
-
-- Download VirtualBox 6.1: https://www.virtualbox.org/wiki/Downloads
-- Download Vagrant 2.2.14: https://www.vagrantup.com/downloads
+- [VirtualBox](https://www.virtualbox.org/manual/) or [Hyper-v](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v).
+- [Vagrant](http://www.vagrantup.com).
 
 ## How do I run?
 
-1. Start Zabbix server:
+1. Open a terminal. If you are using Windows and Hyper-V, you must use a terminal with admin privileges.
+
+2. Clone repository:
+
+```bash
+git clone https://github.com/alvsanand/zabbix-example-environment
+cd zabbix-example-environment
+```
+
+3. Start Zabbix server:
 
 ```bash
 cd server
+
 vagrant up
 ```
 
-2. Get Zabbix server IP:
+4. Get Zabbix server IP:
 
 ```bash
 # Copy value of "HostName"
 vagrant ssh-config
 ```
 
-3. Start Postgres example server:
+5. Set Zabbix server environment variable:
 
 ```bash
-cd ..
+# UNIX
+export ZABBIX_SERVER=PREVIOUS_IP
 
-cd postgres-server
-
-ZABBIX_SERVER=PREVIOUS_IP vagrant up --zabbix-server 
+# Windows
+set ZABBIX_SERVER=PREVIOUS_IP
 ```
 
-4. Start Apache example server:
+6. Start Postgres example server:
 
 ```bash
-cd ..
-
-cd postgres-server
-
-ZABBIX_SERVER=PREVIOUS_IP vagrant up --zabbix-server 
+cd .. && cd postgres-server
+vagrant up
 ```
 
-5. Configure auto-registration in Zabbix:
+7. Start Apache example server:
 
-- Open http://IP_ZABBIX_SERVER/ usding credentials user ```Admin``` and password ```zabbix```
-- Add auto registration trigger: Configuration -> Action -> Autoregistration actions -> Create actions:
-  - Postgres:  
-    - Conditions:
-      - "Host name" contains "postgres".
-    - Operations:
-      - "Add host"
-      - "Link Template host" for templates "Linux by Zabbix agent" and "PostgreSQL by Zabbix agent 2"
-  - Apache:  
-    - Conditions:
-      - "Host name" contains "apache".
-    - Operations:
-      - "Add host"
-      - "Link Template host" for templates "Linux by Zabbix agent" and "Apache by Zabbix agent"
+```bash
+cd .. && cd apache-server
+
+vagrant up
+```
+
+8. Open Zabbis Dashboard from http://IP_ZABBIX_SERVER using default credentials user ```Admin``` and password ```zabbix```.
+
+8. Configure auto-registration in Zabbix:
+    - Add auto registration trigger: Configuration -> Action -> Autoregistration actions -> Create actions:
+      - Postgres:  
+        - Conditions:
+          - "Host name" contains "postgres".
+        - Operations:
+          - "Add host"
+          - "Link Template host" for templates "Linux by Zabbix agent" and "PostgreSQL by Zabbix agent 2"
+      - Apache:  
+        - Conditions:
+          - "Host name" contains "apache".
+        - Operations:
+          - "Add host"
+          - "Link Template host" for templates "Linux by Zabbix agent" and "Apache by Zabbix agent"
